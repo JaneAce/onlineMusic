@@ -1,0 +1,144 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url(/images/5.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.logo_box{
+    width: 400px;
+    height: 400px;
+    color: #EEE;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* margin-left: -45px; */
+    margin-left: -200px;
+    margin-top: -250px;
+    z-index: 999;
+}
+
+.logo_box h3{
+    text-align: center;
+    color: #FFF;
+    height: 155px;
+    font-size: 16px;
+}
+
+.input_outer{
+    height: 46px;
+    padding: 0 5px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    box-shadow: 50px;
+    position: relative;
+    border: 2px solid #EAECEC !important;  /* 优先级 */
+}
+
+.u_user{
+    width: 25px;
+    height: 25px;
+    background: url(/images/登录用户.png);
+    background-size: 25px 25px;
+    background-position: -125px 0;
+    position: absolute;
+    margin: 12px 13px;
+}
+
+.us_uer{
+    width: 25px;
+    height: 25px;
+    background-image: url(/images/登录密码.png);
+    background-size: 25px 25px;
+    background-position: -125px -25px;
+    position: absolute;
+    margin: 12px 13px;
+}
+
+.text{
+    margin-left: 40px;
+    margin-top: 3px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-family: "微软雅黑";
+    letter-spacing: 2px;
+    font-size: 15px;
+    outline: none;
+}
+
+.mb2_submit{
+    height: 46px;
+    width: 400px;
+    padding: 0 5px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    box-shadow: 50px;
+    position: relative;
+    background-color: #29333F;
+    font-size: 15px;
+    font-weight: bold;	
+    color: #fff;
+}
+
+.input_yzm{
+    height: 46px;
+    width: 250px;
+    padding: 0 5px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    box-shadow: 50px;
+    position: relative;
+    border: 2px solid #EAECEC !important;
+    display: inline-block;
+}
+.div_yzm{
+    height: 40px;
+    width: 110px;
+    border-radius: 50px;
+    background-color: transparent; /* 默认，被背景颜色为透明 */
+    display: inline-block;
+    border: 2px solid #EAECEC !important;
+    text-align: center;
+    color: #6d6d6d;
+}
+
+.us_eamil{
+    width: 25px;
+    height: 25px;
+    background-image: url(/images/QQ.png);
+    background-size: 25px 25px;
+    background-position: -125px -25px;
+    position: absolute;
+    margin: 12px 13px;
+}
+.us_yzm{
+    width: 25px;
+    height: 25px;
+    background-image: url(/images/验证码.png);
+    background-size: 25px 25px;
+    background-position: -125px -25px;
+    position: absolute;
+    margin: 12px 13px;
+}
+.us_pwd{
+    width: 25px;
+    height: 25px;
+    background-image: url(/images/登录密码.png);
+    background-size: 25px 25px;
+    background-position: -125px -25px;
+    position: absolute;
+    margin: 12px 13px;
+}
+.us_pwd2{
+    width: 25px;
+    height: 25px;
+    background-image: url(/images/确认密码.png);
+    background-size: 25px 25px;
+    background-position: -125px -25px;
+    position: absolute;
+    margin: 12px 13px;
+}

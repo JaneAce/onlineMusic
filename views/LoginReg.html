@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="/stylesheets/login.css">
+		<script src="/javascripts/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="log">
+			<div class="logo_box">
+				<h3>
+					<img src="/images/login/tx.png" class="imguser">
+					<br>
+					用户登录
+				</h3>
+				<form name="loginForm" method="POST" action="/LoginReg/Reg">
+					<div class="input_outer"> <span class="u_user"></span>
+						<input id="uname" name="uname" class="text" type="text" placeholder="请输入账号" autocomplete="off"><!-- 浏览器自动填充 ，默认是on-->
+					</div>
+					<div class="input_outer"> <span class="us_uer"></span>
+						<input id="upassword" name="upassword" class="text" placeholder="请输入密码" type="password" autocomplete="off">
+					</div>
+					<span style="position: absolute;right: 20px;font-size: 13px;"><a href="">找回密码</a></span>
+					<br><br>
+					<div class="mb2">
+						<input type="submit" class="mb2_submit" value="登 录" id="submit">
+					</div>
+					<span id="regin" style="font-size: 13px; color: black;">无账号？点击注册</span>
+				</form>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		<div id="reg" style="display: none;">
+			<div class="logo_box">
+				<h3>
+					<img src="/images/login/tx.png" class="imguser">
+					<br>
+					用户注册
+				</h3>
+				<form name="loginForm" method="POST" action="/LoginReg">
+					<div class="input_outer"> <span class="u_user"></span>
+						<input  class="text" type="text" placeholder="用户名" name="user_name" autocomplete="off">
+					</div>
+					<div class="input_outer"> <span class="us_eamil"></span>
+						<input  class="text" placeholder="QQ邮箱" type="email" name="user_email" autocomplete="off">
+					</div>
+					<div class="input_yzm"> <span class="us_yzm"></span>
+						<input class="text" placeholder="请验证码" type="text" autocomplete="off">
+					</div>
+					<input type="button" class="div_yzm" id="btn" style="line-height: 40px;" value="获取验证码" onclick="settime(this)">
+					<div class="input_outer"> <span class="us_pwd"></span>
+						<input  class="text" placeholder="请输入密码" type="password" name="user_f_pw" autocomplete="off">
+					</div>
+					<div class="input_outer"> <span class="us_pwd2"></span>
+						<input class="text" placeholder="确认密码" type="password" name="user_l_pw" autocomplete="off">
+					</div>
+					<div>
+						<input type="Submit" class="mb2_submit" value="立 即 注 册">
+					</div>
+					
+					<span id="login" style="color: black;">已有账号？点击登录</span>
+					
+				</form>
+			</div>
+		</div>
+		
+		<script src="/javascripts/js/login.js"></script>	
+	</body>
+</html>
