@@ -6,29 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-    <link rel="stylesheet" href="/stylesheets/bootstrap.css.map">
-    <link rel="stylesheet" href="/stylesheets/my.css">
+    <link rel="stylesheet" href="/stylesheets/mcLib/mcLib.css"> 
+    <link href="/stylesheets/mcLib/player.css" rel="stylesheet" type="text/css">
+    <script src="/javascripts/player/jquery.min.js"></script>
 </head>
 <body>
-    <div>
-            <table class="table">
-                <tr>
-                    <th>    </th>
-                    <th>歌曲名</th>
-                    <th>时长</th>
-                    <th>歌手</th>
-                    <th>添加至歌单</th>
-                    <th>留言</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>芸芸众生</td>
-                    <td>3:24</td>
-                    <td>姜云升</td>
-                    <td><img  class="collect" src="/images/index/收藏.png"></td>
-                    <td><img  class="collect" src="/images/index/编辑.png"></td>
-                </tr>
-            </table>
+       <div>
+        <ul class="nav">
+          <li><a href="/">首页</a></li>
+          <li><a href="">关于我们</a></li>
+          <li><a href="mcLib">曲库</a></li>
+          <li><a href="player">歌单</a></li>
+          <li><a href="user">个人中心</a></li>
+          <li><a href="LoginReg">登入/注册</a></li>
+        </ul>
+       </div>
+       <div class="tab">
+        <table class="table">
+          <tr>
+              <th>    </th>
+              <th>歌曲名</th>
+              <th>时长</th>
+              <th>歌手</th>
+              <th>添加至歌单</th>
+              <th>留言</th>
+              <th>收听</th>
+          </tr>
+          <tr>
+              <td>1</td>
+              <td>芸芸众生</td>
+              <td>3:24</td>
+              <td>姜云升</td>
+              <td><img  class="collect" src="/images/mcLib/收藏.png"></td>
+              <td><img  class="collect" src="/images/mcLib/编辑.png"></td>
+              <td><img  class="collect" src="/images/mcLib/收听.png"></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>芸芸众生</td>
+            <td>3:24</td>
+            <td>姜云升</td>
+            <td><img  class="collect" src="/images/mcLib/收藏.png"></td>
+            <td><img  class="collect" src="/images/mcLib/编辑.png"></td>
+            <td><img  class="collect" src="/images/mcLib/收听.png"></td>
+        </tr>
+      </table>
+       </div>
+    
+<div class="audio green-audio-player">
+  <div class="loading">
+    <div class="spinner"></div>
+  </div>
+  <div class="play-pause-btn">  
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
+      <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause">
+    </svg>
+  </div>
+  
+  <div class="controls">
+    <span class="current-time">0:00</span>
+    <div class="slider" data-direction="horizontal">
+      <div class="progress">
+        <div class="pin" id="progress-pin" data-method="rewind"></div>
+      </div>
     </div>
+    <span class="total-time">0:00</span>
+  </div>
+  
+  <div class="volume">
+    <div class="volume-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="#566574" fill-rule="evenodd" d="M14.667 0v2.747c3.853 1.146 6.666 4.72 6.666 8.946 0 4.227-2.813 7.787-6.666 8.934v2.76C20 22.173 24 17.4 24 11.693 24 5.987 20 1.213 14.667 0zM18 11.693c0-2.36-1.333-4.386-3.333-5.373v10.707c2-.947 3.333-2.987 3.333-5.334zm-18-4v8h5.333L12 22.36V1.027L5.333 7.693H0z" id="speaker">
+      </svg>
+    </div>
+    <div class="volume-controls hidden">
+      <div class="slider" data-direction="vertical">
+        <div class="progress">
+          <div class="pin" id="volume-pin" data-method="changeVolume"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <audio crossorigin>
+    <source src="/music/短篇.mp3" type="audio/mpeg">
+  </audio>
+</div>
+<script src="/javascripts/player/player.js"></script>
 </body>
 </html>

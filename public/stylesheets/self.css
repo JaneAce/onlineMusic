@@ -1,6 +1,9 @@
+.all{
+    margin-top: 26px;
+}
 .title{
     width: 100%;
-    height: 50%;
+    height: 200px;
     background: url(/images/1.jpg);
 }
 .one{

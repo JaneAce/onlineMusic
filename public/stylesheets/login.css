@@ -115,25 +115,16 @@ body{
     position: absolute;
     margin: 12px 13px;
 }
-.us_yzm{
+.us_phoneno{
     width: 25px;
     height: 25px;
-    background-image: url(/images/验证码.png);
+    background-image: url(/images/电话号码.png);
     background-size: 25px 25px;
     background-position: -125px -25px;
     position: absolute;
     margin: 12px 13px;
 }
 .us_pwd{
-    width: 25px;
-    height: 25px;
-    background-image: url(/images/登录密码.png);
-    background-size: 25px 25px;
-    background-position: -125px -25px;
-    position: absolute;
-    margin: 12px 13px;
-}
-.us_pwd2{
     width: 25px;
     height: 25px;
     background-image: url(/images/确认密码.png);

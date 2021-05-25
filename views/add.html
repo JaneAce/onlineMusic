@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+form{
+    width: 50%;
+    margin-left: 39%;
+}
+.input{
+	background-color: #219dde;
+    border: 2px solid black;
+    width: 30%;
+    margin-left: 38%;
+    position: fixed;
+    top: 25%;
+    height: 70%;
+	display: none;
+}
+.is{
+    border: 1px solid rgb(211, 208, 208);
+    font-size: small;
+    color: rgb(211, 208, 208);
+    height: 28px;
+    text-align: center;
+    border-radius: 6px;
+    width: 172px;
+    }
+.is:focus{
+    outline: none;
+    border-style: solid;
+    border-color: #219dde;
+}
+#up{
+	height: 32px;
+    text-align: center;
+    margin-left: 3%;
+    width: 57px;
+}
+ul li{
+    list-style: none;
+}
+</style>
+<body>
+    <form action="/background" method="POST">
+        <ul>
+            <li>用户名</li>
+                <input class="is" type="text" name="username" autocomplete="off"/>
+            
+            <li>邮箱</li>
+            <input class="is" type="text" name="useremail" autocomplete="off"/>
+            
+            <li>电话号码 </li>
+            <input class="is"type="text" name="userphoneno" autocomplete="off"/>
+           
+            <li>密码</li> 
+            <input class="is"type="text" name="userpw" autocomplete="off"/>
+              
+            <li>是否为管理员(y,n)</li>
+            <input class="is"type="text" name="isAdmin"autocomplete="off"/>
+            
+            <li><input type="submit"/></li>
+        </ul>
+    </form>
+</body>
+</html>

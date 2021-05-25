@@ -8,8 +8,11 @@ var ejs = require('ejs');
 var indexRouter = require('./routes/index');
 var loginRegRouter = require('./routes/loginReg');
 var libRouter = require('./routes/mcLib');
-var selfRouter = require('./routes/self');
+var userRouter = require('./routes/user');
 var bgRouter = require('./routes/background');
+var reuserRouter = require('./routes/reuser');
+var remimaRouter = require('./routes/remima');
+var playRouter = require('./routes/player');
 
 var app = express();
 
@@ -26,9 +29,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/LoginReg',loginRegRouter);
-app.use('/self',selfRouter);
+app.use('/self',userRouter);
 app.use('/mcLib',libRouter);
 app.use('/background',bgRouter);
+app.use('/reuser',reuserRouter);
+app.use('/remima',remimaRouter);
+app.use('/player',playRouter);
  
 
 // catch 404 and forward to error handler
@@ -45,6 +51,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  console.log(error)
 });
 
 module.exports = app;

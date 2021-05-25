@@ -3,7 +3,8 @@ var router =express.Router();
 
 
 router.get('/',(req,res)=>{
-  res.render('mcLib')
+  res.render('mcLib') 
 });
+
 
 module.exports=router;

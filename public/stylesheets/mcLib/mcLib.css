@@ -1,0 +1,17 @@
+.collect{
+    width: 25px;
+    height: 25px;
+    margin-left: 8px;
+}
+.nav{
+    position: fixed;
+    top: 0;
+    list-style: none;
+}
+.nav li{
+    display: inline-block;
+}
+.tab{
+    margin-top: 4%;
+    width: 100%;
+}

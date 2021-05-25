@@ -21,8 +21,7 @@
     <div class="navbar-header">
       <div class="logo">
         <h1>后台管理界面</h1>
-        <a href="#" data-toggle="modal" data-target="#confirmModal" style="position:absolute;right:80px;top:50%;margin-top:-10px;color:inherit;">
-          <i class="fa fa-sign-out"></i> Logout
+          <i class="fa fa-sign-out"><a href="/">返回首页</a></i>
         </a>
       </div>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -50,13 +49,13 @@
         </li>
         <li>
         	<li>
-          <a href="#" id="menu1"><i class="fa fa-suitcase"></i>曲库添加</a>
+          <a href="#" id="menu1"><i class="fa fa-suitcase"></i>曲库管理</a>
         </li>
         <li>
           <a href="#" id="menu2"><i class="fa fa-user"></i>歌单管理</a>
         </li>
         <li>
-          <a href="#" id="menu3"><i class="fa fa-user"></i>注销账号</a>
+          <a href="#" id="menu3"><i class="fa fa-user"></i>首页管理</a>
         </li>
         <!-- /点击部分 -->
       </ul>
@@ -71,9 +70,54 @@
             </li>
           </ul>
           <div class="tab-content">
-          	<div id="tabs-menu0" class="tab-pane active"><h1>欢迎您！XXX </h1></div>
-            <div id="tabs-menu1" class="tab-pane"></div>
-            <div id="tabs-menu2" class="tab-pane"></div>
+          	<div id="tabs-menu0" class="tab-pane active"><h1>欢迎您,管理员!</h1><h1 id="uname"></h1>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>    </th>
+                    <th>用户名称</th>
+                    <th>用户邮箱</th>
+                    <th>用户电话号码</th>
+                    <th>用户密码</th>
+                    <th>按钮</th>
+                    <th><button id="newadd">+新增</button></th>
+                </tr>
+                </thead>
+              <tbody id="newData">
+                <% detail.forEach((a,i) =>{ %>
+                  <tr>
+                    <td><%=a.user_id %></td>
+                    <td><%=a.user_name %></td>
+                    <td><%=a.user_email %></td>
+                    <td><%=a.user_phone %></td>
+                    <td><%=a.user_pw %></td>
+                    <td>
+                      <input data-id=<%=a.user_id %> type="button" value="删除" class="delete">
+                      <input data-id=<%=a.user_id %> type="button" value="修改" class="update">
+                    </td>
+                  </tr>
+          
+                <%}) %>
+                
+              </tbody>
+              </table>
+            </div>
+            <div id="tabs-menu1" class="tab-pane">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>    </th>
+                    <th>歌曲名</th>
+                    <th>时长</th>
+                    <th>歌手</th>
+                    <th>按钮</th>
+                    <th>上传</th>
+                </tr>
+                </thead>
+            </div>
+            <div id="tabs-menu2" class="tab-pane">
+              
+            </div>
             <div id="tabs-menu3" class="tab-pane"></div>
           </div>
         </div>
@@ -88,4 +132,5 @@
   </div>
 </body>
 <script src="/javascripts/tabs/custom-tabs.js"></script>
+<script src="/javascripts/background.js"></script>
 </html>
