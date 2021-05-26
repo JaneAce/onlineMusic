@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/LoginReg',loginRegRouter);
+app.use('/',loginRegRouter);
 app.use('/self',userRouter);
 app.use('/mcLib',libRouter);
 app.use('/background',bgRouter);

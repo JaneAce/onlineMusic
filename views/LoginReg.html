@@ -15,7 +15,7 @@
 					<br>
 					用户登录
 				</h3>
-				<form name="loginForm" method="POST" action="/LoginReg/reg" onsubmit="return">
+				<form name="loginForm" method="POST" action="/index" onsubmit="return">
 					<div class="input_outer"> <span class="u_user"></span>
 						<input id="uname" name="uname" class="text" type="text" placeholder="请输入用户名 " autocomplete="off"><!-- 浏览器自动填充 ，默认是on-->
 					</div>
@@ -44,20 +44,23 @@
 					<br>
 					用户注册
 				</h3>
-				<form name="loginForm" method="POST" action="/LoginReg" onsubmit="return">
+				<form name="loginForm" method="POST" action="/LoginReg" onsubmit="return checkAll()">
 					<div class="input_outer"> <span class="u_user"></span>
-						<input  class="text" type="text" placeholder="用户名" name="user_name" autocomplete="off">
+						<input  class="text" type="text" placeholder="用户名" name="user_name" autocomplete="off" id="username" onblur="checkName()">
 					</div>
+					<div class="input_outer"><span class="errmg" id="errmg1"></span></div>
 					<div class="input_outer"> <span class="us_eamil"></span>
-						<input  class="text" placeholder="QQ邮箱" type="email" name="user_email" autocomplete="off">
+						<input  class="text" placeholder="QQ邮箱" type="email" name="user_email" autocomplete="off" id="useremail" onblur="checkEmail()">
 					</div>
-					    
+					<div class="input_outer"><span class="errmg" id="errmg2"></span></div>    
 					<div class="input_outer"> <span class="us_phoneno"></span>
-						<input  class="text" placeholder="请输入电话号码" type="tel" name="user_phone" autocomplete="off">
+						<input  class="text" placeholder="请输入电话号码" type="tel" name="user_phone" autocomplete="off" id="userphoneno" onblur="checkPhone()">
 					</div>
+					<div class="input_outer"><span class="errmg" id="errmg3"></span></div>
 					<div class="input_outer"> <span class="us_pwd"></span>
-						<input class="text" placeholder="请输入密码" type="password" name="user_pw" autocomplete="off">
+						<input class="text" placeholder="请输入密码" type="password" name="user_pw" autocomplete="off" id="userpw" onblur="checkPw()">
 					</div>
+					<div class="input_outer"><span class="errmg" id="errmg4"></span></div>
 					<div class="input-outer"></div>
 					<div>
 						<input type="submit" class="mb2_submit" value="立 即 注 册" id="Reg">
