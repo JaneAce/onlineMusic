@@ -1,4 +1,3 @@
-
 $(function(){
     $("#regin").click(function(){
         $("#log").hide();
@@ -10,25 +9,21 @@ $(function(){
         $("#reg").hide();
     });
     //注册
-    // $("#Reg").click(function(){
-    //     $.ajax({
-    //         type:'post',
-    //         url:'/LoginReg',
-    //         data:{
-    //             user_name:$("#user_name").val(),
-    //             user_pw:$Reg.$("#user_pw").val(),
-    //         },
-    //         dataType:'json',
-    //         success:function(result){
-    //             if (result.code == 0) {
-    //                 alert('注册成功')
-    //                 window.location.href ='LoginReg';
-    //               } else {
-    //                 alert(result.message);
-    //               }
-    //         }
-    //     })
-    // });
+    $("#Reg").click(function(){
+        $.ajax({
+            type:'post',
+            url:'/LoginReg',
+            dataType:'json',
+            success:function(result){
+                if (result.code == 0) {
+                    alert('注册成功')
+                  } else {
+                      alert(result.message)
+                  }
+            }
+        })
+    });
+
     //登入
     $("#Login").click(function(){
         $.ajax({
@@ -63,7 +58,7 @@ function checkName(){
         return ture
     }
     else if(username==''||username==undefined){
-        document.getElementById("errmg1").innerHTML="用户名不能为空";
+        document.getElementById("errName").innerHTML="用户名不能为空";
         return false
     }
 }
@@ -75,7 +70,7 @@ function checkEmail(){
     // }
      if(useremail==''||useremail==undefined){
         
-        document.getElementById("errmg1").innerHTML="邮箱不能为空";
+        document.getElementById("errEmail").innerHTML="邮箱不能为空";
         return false
     }
     else{
@@ -90,7 +85,7 @@ function checkPhone(){
     // }
     if(userphone==''||userphone==undefined){
         
-        document.getElementById("errmg2").innerHTML="电话号码不能为空";
+        document.getElementById("errPhone").innerHTML="电话号码不能为空";
         return false
     }
     else{
@@ -106,7 +101,7 @@ function checkPw(){
     // }
     if(userpw==''||userpw==undefined){
         
-        document.getElementById("errmg3").innerHTML="密码不能为空";
+        document.getElementById("errPw").innerHTML="密码不能为空";
         return false
     }
     else{
@@ -115,14 +110,17 @@ function checkPw(){
 }
 function checkAll(){
     var uname=checkName();
-    var uphone=checkphone();
+    var uphone=checkPhone();
     var upw=checkPw();
     var uem=checkEmail();
     if(uname&&uphone&&upw&&uem){
+        console.log("全部为ture")
         return true
+        
     }
     else{
-        document.getElementById("errmg4").innerHTML="不能为空";
+        document.getElementById("errAll").innerHTML="不能为空";
+        console.log("全部为false")
         return false
         
     }

@@ -133,3 +133,7 @@ body{
     position: absolute;
     margin: 12px 13px;
 }
+.input_err{
+    font-size: 15px;
+    color:red;
+}
