@@ -15,18 +15,18 @@
 					<br>
 					用户登录
 				</h3>
-				<form name="loginForm" method="POST" action="/index" onsubmit="return">
+				<form name="loginForm" method="POST" action="/user">
 					<div class="input_outer"> <span class="u_user"></span>
 						<input id="uname" name="uname" class="text" type="text" placeholder="请输入用户名 " autocomplete="off"><!-- 浏览器自动填充 ，默认是on-->
 					</div>
 					<div class="input_outer"> <span class="us_pwd"></span>
-						<input id="upassword" name="upassword" class="text" placeholder="请输入密码" type="password" autocomplete="off">
+						<input id="upw" name="upw" class="text" placeholder="请输入密码" type="password" autocomplete="off">
 					</div>
 					<div class="input-outer"><span id="erreg"></span></div>
 					<span style="position: absolute;right: 20px;font-size: 13px;"><a href="">找回密码</a></span>
 					<br><br>
 					<div class="mb2">
-						<input type="submit" class="mb2_submit" value="登 录" id="Login">
+						<input type="button" class="mb2_submit" value="登 录" id="Login">
 					</div>
 					<span id="regin" style="font-size: 13px; color: black;">无账号？点击注册</span>
 				</form>

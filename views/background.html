@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/common/bootstrap-table.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/common/jquery-ui-1.10.0.custom.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/templatemo/templatemo_main.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/background/background.css"/>
   
   <script src="/javascripts/common/jquery.min.js"></script>
   <script src="/javascripts/common/jquery-ui-1.9.2.custom.min.js"></script>
@@ -83,7 +84,7 @@
                     <th><button id="newadd">+新增</button></th>
                 </tr>
                 </thead>
-              <tbody id="newData">
+              <tbody>
                 <% detail.forEach((a,i) =>{ %>
                   <tr>
                     <td><%=a.user_id %></td>
@@ -108,12 +109,26 @@
                   <tr>
                     <th>    </th>
                     <th>歌曲名</th>
-                    <th>时长</th>
                     <th>歌手</th>
-                    <th>按钮</th>
-                    <th>上传</th>
+                    <th>添加至歌单</th>
+                    <th>留言</th>
+                    <th>收听</th>
                 </tr>
                 </thead>
+                <tbody>
+                  <% data.forEach(a =>{ %>
+                    <tr>
+                      <td><%=a.music_id %></td>
+                      <td><%=a.music_name %></td>
+                      <td><%=a.singer %></td>
+                      <td><img src=<%=a.collect %> class="collect"></td>
+                      <td><img src=<%=a.like %> class="collect"></td>
+                      <td><img src=<%=a.listen %> class="collect"></td>
+                    </tr>
+            
+                  <%}) %>
+                </tbody>
+            </table>
             </div>
             <div id="tabs-menu2" class="tab-pane">
               

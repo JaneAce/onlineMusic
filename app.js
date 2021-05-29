@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');
-var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var loginRegRouter = require('./routes/loginReg');
@@ -16,8 +16,6 @@ var remimaRouter = require('./routes/remima');
 var playRouter = require('./routes/player');
 
 var app = express();
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,15 +24,22 @@ app.set('view engine', 'html');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));//解析post请求
+app.use(cookieParser("login"));
+app.use(session({
+  name:'userlogin',
+  secret:'login', 
+  cookie:{maxAge:60000},
+  resave:false,
+  saveUninitialized:true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
 app.use('/',loginRegRouter);
-app.use('/self',userRouter);
-app.use('/mcLib',libRouter);
+app.use('/user',userRouter);
+app.use('/',libRouter);
 app.use('/background',bgRouter);
 app.use('/reuser',reuserRouter);
 app.use('/remima',remimaRouter);

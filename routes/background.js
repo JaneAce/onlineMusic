@@ -1,20 +1,31 @@
 var express = require('express');
 var router = express.Router();
 var pool = require('../pool');
+var mysql = require('mysql');
 
-var sesql = 'SELECT * FROM `tab_user` limit 1,6'
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'password',
+    port: '3306',
+    database: 'music',
+    //同时使用多条查询语句：
+    multipleStatements: true
+});
+var usersql = 'SELECT * FROM `tab_user` limit 1,6;SELECT * FROM `tab_mc_lib`'
+
 router.get('/',(req,res)=>{
-    pool.query(sesql,(err,result)=>{
-        if(err){
-            console.log(err)
-            return
-        }
-        if(result){
-            // var data=JSON.parse(result)
-            res.render('background',{detail:result})
-            return
-        }
-    }) 
+       connection.query(usersql,function(err,result){
+           if(err){
+               console.log(err)
+           }
+           if(result){
+               res.render('background',{
+                   detail:result[0],
+                    data:result[1]})
+           }
+       })
+
 });
 //删除数据
 // router.post('/',(req,res)=>{

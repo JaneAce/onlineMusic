@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="//at.alicdn.com/t/font_8d5l8fzk5b87iudi.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <link rel="stylesheet" href="/stylesheets/mcLib/mcLib.css"> 
     <link href="/stylesheets/mcLib/player.css" rel="stylesheet" type="text/css">
@@ -23,33 +24,29 @@
        </div>
        <div class="tab">
         <table class="table">
-          <tr>
+          <thead>
+            <tr>
               <th>    </th>
               <th>歌曲名</th>
-              <th>时长</th>
               <th>歌手</th>
               <th>添加至歌单</th>
               <th>留言</th>
               <th>收听</th>
           </tr>
-          <tr>
-              <td>1</td>
-              <td>芸芸众生</td>
-              <td>3:24</td>
-              <td>姜云升</td>
-              <td><img  class="collect" src="/images/mcLib/收藏.png"></td>
-              <td><img  class="collect" src="/images/mcLib/编辑.png"></td>
-              <td><img  class="collect" src="/images/mcLib/收听.png"></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>芸芸众生</td>
-            <td>3:24</td>
-            <td>姜云升</td>
-            <td><img  class="collect" src="/images/mcLib/收藏.png"></td>
-            <td><img  class="collect" src="/images/mcLib/编辑.png"></td>
-            <td><img  class="collect" src="/images/mcLib/收听.png"></td>
-        </tr>
+          </thead>
+          <tbody>
+            <% detail.forEach(a =>{ %>
+              <tr>
+                <td><%=a.music_id %></td>
+                <td><%=a.music_name %></td>
+                <td><%=a.singer %></td>
+                <td><img src=<%=a.collect %> class="collect"></td>
+                <td><img src=<%=a.like %> class="collect"></td>
+                <td><img src=<%=a.listen %> class="collect"></td>
+              </tr>
+      
+            <%}) %>
+          </tbody>
       </table>
        </div>
     

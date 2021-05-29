@@ -8,44 +8,43 @@ $(function(){
         $("#log").show();
         $("#reg").hide();
     });
-    //注册
-    $("#Reg").click(function(){
-        $.ajax({
-            type:'post',
-            url:'/LoginReg',
-            dataType:'json',
-            success:function(result){
-                if (result.code == 0) {
-                    alert('注册成功')
-                  } else {
-                      alert(result.message)
-                  }
-            }
-        })
-    });
-
     //登入
     $("#Login").click(function(){
         $.ajax({
             type:'post',
-            url:'/index',
-            dataType:'json',
+            url:'/user',
             data:{
-                user_name:$("#user_name").val(),
-                user_pw:$Reg.$("#user_pw").val(),
+                uname:$("#uname").val(),
+                upw:$("#upw").val()
             },
             dataType:'json',
-            success:function(result){
-                if(result.code==0){
-                    alert("登入成功")
-                    window.location.href='index';
-                }else{
-                    alert(result.message)
+            success:function(data){
+                alert(data);
+                if(data="登入成功"){
+                    setTimeout(function(){
+                        window.location.href='/user'
+                    },1000)
                 }
                   }
             
         })
     })
+    // $("#Reg").click(function(){
+    //     $.ajax({
+    //         type:'post',
+    //         url:'/LoginReg',
+    //         data:{
+    //             user_name:$("#user_name").val(),
+    //             user_email:$("#user_email").val(),
+    //             user_phone:$("#user_phone").val(),
+    //             user_pw:$("#user_pw").val()
+    //         },
+    //         dataType:'json',
+    //         success:function(data){
+    //             alert(data)
+    //         }
+    //     })
+    // })
     
     $(".four").mouseover(function(){
         $("body").css( "background-image" ,"url('/images/5.gif')");
@@ -63,49 +62,48 @@ function checkName(){
     }
 }
 function checkEmail(){
-    var useremail = document.getElementById("username").value;
-    var qqemail=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-    // if(qqemail.test(useremail)){
-    //     return ture
-    // }
-     if(useremail==''||useremail==undefined){
+    var useremail = document.getElementById("useremail").value;
+    var qqemail=/[1-9]\d{7,10}@qq\.com/;
+    if(qqemail.test(useremail)){
+        return ture
+    }
+    else if(useremail==''||useremail==undefined){
         
         document.getElementById("errEmail").innerHTML="邮箱不能为空";
         return false
     }
     else{
-        return ture
+        return false
     }
 }
 function checkPhone(){
     var userphone=document.getElementById("userphoneno").value;
-    var pmun=/^(\(\d{3,4}\)|\d{3,4}-)?\d{7,8}$/;
-    // if(pmun.test(userphone)){
-    //     return true
-    // }
-    if(userphone==''||userphone==undefined){
-        
+    var rephoneno = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$/;
+    if (rephoneno.test(userphone)) {
+        return ture
+    }
+    if( userphone ==''|| userphone==undefined){
         document.getElementById("errPhone").innerHTML="电话号码不能为空";
         return false
     }
     else{
-        return ture
+        return false
     }
 }
 function checkPw(){
     var userpw=document.getElementById("userpw").value;
     var pw=/^[0-9]{6,18}$/;//6~18位数字
-    // if(pw.test(userpw)){
-    //     alert("请输入6~18位的数字")
-    //     return ture
-    // }
+    if(pw.test(userpw)){
+        alert("请输入6~18位的数字")
+        return ture
+    }
     if(userpw==''||userpw==undefined){
         
         document.getElementById("errPw").innerHTML="密码不能为空";
         return false
     }
     else{
-        return ture
+        return false
     }
 }
 function checkAll(){
@@ -113,15 +111,15 @@ function checkAll(){
     var uphone=checkPhone();
     var upw=checkPw();
     var uem=checkEmail();
-    if(uname&&uphone&&upw&&uem){
-        console.log("全部为ture")
-        return true
-        
-    }
-    else{
+    if(uname&&uphone&&upw&&uem!=false){
         document.getElementById("errAll").innerHTML="不能为空";
         console.log("全部为false")
         return false
+        
+    }
+    else{
+        console.log("全部为ture")
+        return ture
         
     }
 }
