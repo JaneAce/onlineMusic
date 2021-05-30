@@ -13,7 +13,7 @@ var userRouter = require('./routes/user');
 var bgRouter = require('./routes/background');
 var reuserRouter = require('./routes/reuser');
 var remimaRouter = require('./routes/remima');
-var playRouter = require('./routes/player');
+var songListRouter = require('./routes/songList');
 
 var app = express();
 
@@ -43,7 +43,7 @@ app.use('/',libRouter);
 app.use('/background',bgRouter);
 app.use('/reuser',reuserRouter);
 app.use('/remima',remimaRouter);
-app.use('/player',playRouter);
+app.use('/songList',songListRouter);
  
 
 // catch 404 and forward to error handler

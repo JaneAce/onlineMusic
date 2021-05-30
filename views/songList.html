@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>歌单</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/song_list/tplayer.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/FontAwesome4.1/css/font-awesome.min.css" />
+    <script src="/javascripts/player/jquery.js"></script>
+    <script src="/javascripts/player/jquery-ui.js"></script>
+    <script src="/javascripts/player/tPlayer.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="span6">
+			<ul class="nav nav-tabs">
+				<li><a href="/">首页</a></li>
+				<li><a href="mcLib">曲库</a></li>
+				<li class="active"><a href="songList">歌单</a></li>
+				<li ><a href="user">个人中心</a></li>
+				<li><a href="LoginReg">登入</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="myplayer">
+	<!-- 代码 开始 -->
+    <div id="t_wrapper">
+        <div id="t_cover">
+        	<img src="/images/mcLib/logo.png">
+        </div>
+    	<div id="t_top">
+    		<div id="t_title_info">
+    			<span class="artist"></span>
+    			<span class="title"></span>
+    		</div>
+    	</div>
+    	<div id="t_middle">
+    		<div id="play"></div>
+    		<div id="pause" class="hidden">
+    		</div>
+    		<div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="t_progress">
+                <div id="trackInfo">
+                    <div id="error">
+    				</div>
+                    <div id="current">0:00</div>
+                    <div id="duration">0:00</div>
+    			</div>
+    			<div style="width: 0%;" class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min"></div>
+            	<span style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+            </div>
+    		<span id="prev"></span>
+            <span id="next"></span>
+    	</div>
+    	<div id="t_bottom">
+            <div id="range">
+                <div id="val"></div>
+                <div id="vol"></div>
+                <div id="rangeVal"></div>
+            </div>
+            <div id="t_pls_show" class="noselectpls"></div>
+    	</div>
+    </div>
+    <div id="playlist">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>    </th>
+					<th>歌曲名</th>
+					<th>歌手</th>
+					<th>添加至歌单</th>
+					<th>留言</th>
+					<th>收听</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% detail.forEach(a =>{ %>
+				<tr>
+					<td><%=a.music_id%></td>
+					<td><%=a.music_name%></td>
+					<td><%=a.singer%></td>
+					<td><img src="<%=a.collect%>"  width="25px" height="25px"></td>
+					<td><img src="<%=a.like%>" width="25px" height="25px"></td>
+					<td>
+						<ul>
+							<li t_cover="<%=a.poster%>" t_artist="<%=a.music_name %>" t_name="<%=a.singer%>"> 
+								<a href="#"><img src="<%=a.listen%>" style="width: 25px; height: 25px;"></a>
+								<audio preload="none">
+									<source src="<%=a.music_path%>" type="audio/mp3">
+								</audio>
+							</li>
+						</ul>
+						
+					</td>
+				</tr>
+			</tbody>
+			<%}) %>
+		</table>
+		
+</body>
+</html>
