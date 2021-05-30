@@ -46,22 +46,24 @@ ul li{
 }
 </style>
 <body>
-    <form action="/backgroun" method="POST">
+    <form action="/update" method="POST">
         <ul>
+            <% detail.forEach(a =>{ %>
             <li>
-            <input class="is" type="text" name="id" value="<%=result.user_id %>" />
+            <input class="is" type="text" name="id" value="<%=a.user_id %>"/>
             </li>
             <li>用户名</li>
-            <input class="is" type="text" name="uname" value="<%=result.user_name %>"  />
+            <input class="is" type="text" name="uname" value="<%=a.user_name %>"/>
             <li>用户邮箱</li>
-            <input class="is" type="text" name="uemail" value="<%=result.user_email %>" />
+            <input class="is" type="text" name="uemail" value="<%=a.user_email %>"/>
             <li>用户电话</li>
-            <input class="is"type="text" name="phoneno" value="<%=result.user_phone %>" />
+            <input class="is"type="text" name="phoneno" value="<%=a.user_phone %>"/>
             <li>用户密码</li>
-            <input class="is"type="text" name="pw" value="<%=result.user_pw %>" />
+            <input class="is"type="text" name="pw" value="<%=a.user_pw %>"/>
             <li>是由为管理员(y,n)</li>
-            <input class="is"type="text" name="admin" value="<%=result.isAdmin %>" />
+            <input class="is"type="text" name="admin" value="<%=a.isAdmin %>"/>
             <input type="submit"/>
+            <%}) %>
         </ul>
     </form>
 </body>

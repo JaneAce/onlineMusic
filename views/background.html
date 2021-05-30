@@ -81,7 +81,7 @@
                     <th>用户电话号码</th>
                     <th>用户密码</th>
                     <th>按钮</th>
-                    <th><button id="newadd">+新增</button></th>
+                    <th><button type="button" class="btn btn-info" id="newadd">新增</button></th>
                 </tr>
                 </thead>
               <tbody>
@@ -92,10 +92,11 @@
                     <td><%=a.user_email %></td>
                     <td><%=a.user_phone %></td>
                     <td><%=a.user_pw %></td>
-                    <td>
+                    <!-- <td>
                       <input data-id=<%=a.user_id %> type="button" value="删除" class="delete">
                       <input data-id=<%=a.user_id %> type="button" value="修改" class="update">
-                    </td>
+                    </td> -->
+                    <td><a href="/background/update/<%=a.user_id%>">修改</a>|<a href="/background/delete/<%=a.user_id%>">删除</a></td>
                   </tr>
           
                 <%}) %>
@@ -149,5 +150,5 @@
   </div>
 </body>
 <script src="/javascripts/tabs/custom-tabs.js"></script>
-<script src="/javascripts/background.js"></script>
+<script src="/javascripts/background/background.js"></script>
 </html>

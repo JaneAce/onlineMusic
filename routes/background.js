@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
     //同时使用多条查询语句：
     multipleStatements: true
 });
-var usersql = 'SELECT * FROM `tab_user` limit 1,6;SELECT * FROM `tab_mc_lib`'
+var usersql = 'SELECT * FROM `tab_user` limit 0,6;SELECT * FROM `tab_mc_lib`'
 
 router.get('/',(req,res)=>{
        connection.query(usersql,function(err,result){
@@ -28,34 +28,38 @@ router.get('/',(req,res)=>{
 
 });
 //删除数据
-// router.post('/',(req,res)=>{
-//     var desql='delete from tab_user where user_id=?'+data
-//     pool.query(desql,[req.body.user_name,req.body.user_email,req.body.user_phone,req.body.user_pw],(err,result)=>{
-//         if(err){
-//             console.log(err+"删除数据失败！")
-//             return
-//         }
-//         if(result){
-//             res.redirect('/background')
-//             return
-//         }
-//     })
-   
-//   });
-//新增页面的路由
-router.get('/addpage',(req,res)=>{
-    res.render('add');
-  })
+router.get('/delete/:id',function(req,res){
+    var id=req.params.id
+    console.log(id)
+    var desql='DELETE FROM`tab_user` WHERE user_id=?'
+    pool.getConnection(function(err,conn){
+        if(err){
+            console.log(err)
+        }if(conn){
+            conn.query(desql,[id],function(err,result){
+                if(err){
+                    console.log(err)
+                }
+                if(result){
+                    res.redirect('/')
+                }
+            })
+        }
+        pool.releaseConnection(conn);
+    })
+})
+
 //修改页面路由
-router.get('/update',(req,res)=>{
-    console.log(req.query.id)
-    var upsql='select*from tab_user where user_id =79'
-        pool.query(upsql,[req.query.id],function(err,result){
+router.get('/update/:id',(req,res)=>{
+    var id=req.params.id
+    console.log(req.params.id)
+    var upsql='select*from tab_user where user_id=?'
+        pool.query(upsql,[id],function(err,result){
             if(err){
-                console.log("查询失败");
+                console.log("删除失败");
             }
             if(result){
-                res.render('update',{result:result[0]});
+                res.render('update',{detail:result});
                 console.log(result);
             }
         })       
@@ -63,8 +67,8 @@ router.get('/update',(req,res)=>{
 //提交修改数据
 router.post('/update',(req,res)=>{
     var param=req.body
-    var updsql='UPDATE tab_user SET user_name=?,user_email=?,user_phone=?,user_pw=? WHERE user_id=2'
-    pool.query(upsql,[param.uname,param.uemail,param.phoneno,param.pw],function(err,result){
+    var updsql='UPDATE tab_user SET user_name=?,user_email=?,user_phone=?,user_pw=? WHERE user_id=?'
+    pool.query(updsql,[param.uname,param.uemail,param.phoneno,param.pw,param.id],function(err,result){
         if(err){
             console.log(err+"修改数据失败！")
         }
@@ -73,6 +77,11 @@ router.post('/update',(req,res)=>{
         }
     })
 })
+//新增页面的路由
+router.get('/addpage',(req,res)=>{
+    res.render('add');
+  });
+
 //提交新增数据
 router.post('/',(req,res)=>{
     var param=req.body
