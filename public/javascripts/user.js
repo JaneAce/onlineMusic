@@ -1,4 +1,6 @@
 $(function(){
+//管理员进入后台
+
 
 //	订单页面  修改地址
 	$(".edit").click(function(){

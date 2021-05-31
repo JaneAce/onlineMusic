@@ -1,19 +1,4 @@
-// $(function(){
-//     Array.from(document.getElementsByClassName("delete")).forEach(i =>{
-//         i.onclick = function(){
-//             let index = this.getAttribute("data_id");
-//             $.ajax({
-//                 type:'post',
-//                 url:'/background',
-//                 data:{id:index},
-//                 success:function(data){
-//                     console.log(data)
-//                     window.location.href='/background'
-//                 }
-//             })
-    
-//         }
-//       });
+
       //删除按钮的点击事件
 Array.from(document.getElementsByClassName("delete")).forEach(i=>{
     i.onclick=function(){

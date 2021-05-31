@@ -93,10 +93,10 @@ function checkPhone(){
 function checkPw(){
     var userpw=document.getElementById("userpw").value;
     var pw=/^[0-9]{6,18}$/;//6~18位数字
-    if(pw.test(userpw)){
-        alert("请输入6~18位的数字")
-        return ture
-    }
+    // if(pw.test(userpw)){
+    //     alert("请输入6~18位的数字")
+    //     return ture
+    // }
     if(userpw==''||userpw==undefined){
         
         document.getElementById("errPw").innerHTML="密码不能为空";

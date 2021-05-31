@@ -12,8 +12,8 @@ var connection = mysql.createConnection({
     //同时使用多条查询语句：
     multipleStatements: true
 });
-var usersql = 'SELECT * FROM `tab_user` limit 0,6;SELECT * FROM `tab_mc_lib`'
-
+var usersql = 'SELECT * FROM `tab_user` limit 0,6;SELECT * FROM `tab_mc_lib`;SElECT isAdmin FROM `tab_user`'
+//后台管理的路由
 router.get('/',(req,res)=>{
        connection.query(usersql,function(err,result){
            if(err){
@@ -23,9 +23,26 @@ router.get('/',(req,res)=>{
                res.render('background',{
                    detail:result[0],
                     data:result[1]})
+                    console.log("get的数据"+result[0])
            }
        })
 
+});
+//查询提交
+router.post('/',(req,res)=>{
+    var param=req.body
+    var sesql='SELECT*FROM `tab_user` WHERE user_name=? AND user_email=?;SElECT isAdmin FROM `tab_user`'
+    connection.query(sesql,[param.sname,param.semail],function(err,result){
+        if(err){
+            console.log(err)
+        }
+        if(result){
+            res.render('background',{
+                detail:result[0],
+                 data:result[1]})
+                 console.log("查询结果"+result[0])
+        }
+    })
 });
 //删除数据
 router.get('/delete/:id',function(req,res){
@@ -41,7 +58,7 @@ router.get('/delete/:id',function(req,res){
                     console.log(err)
                 }
                 if(result){
-                    res.redirect('/')
+                    res.redirect('/background')
                 }
             })
         }
@@ -83,7 +100,7 @@ router.get('/addpage',(req,res)=>{
   });
 
 //提交新增数据
-router.post('/',(req,res)=>{
+router.post('/update',(req,res)=>{
     var param=req.body
     var addsql='INSERT into tab_user(user_name,user_email,user_phone,user_pw,isAdmin) VALUES(?,?,?,?,?)';
     pool.query(addsql,[param.username,param.useremail,param.userphoneno,param.userpw,param.isAdmin],function(err,result){
@@ -91,8 +108,9 @@ router.post('/',(req,res)=>{
             console.log(err+"新增数据失败")
         }
         if(result){       
-    res.redirect('/background')
+            res.redirect('/background')
         }
     })
-})
+});
+
 module.exports=router;

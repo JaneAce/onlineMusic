@@ -9,6 +9,7 @@ router.get('/LoginReg',(req,res)=>{
 //注册
 router.post('/LoginReg',(req,res)=>{
   var inputname=req.body.user_name;
+  var param=req.body;
   var sesql ='SELECT user_name FROM `tab_user` WHERE user_name =?';
   var insql='INSERT into tab_user(user_name,user_email,user_phone,user_pw) VALUES(?,?,?,?)';
     pool.getConnection(function(err,conn){
@@ -28,8 +29,7 @@ router.post('/LoginReg',(req,res)=>{
                if (err){
                  console.log(err)
                }
-               else{
-                 code=0;        
+               if(result){      
                  res.render('LoginReg')
                }
              })
