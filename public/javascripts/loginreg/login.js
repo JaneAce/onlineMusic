@@ -17,10 +17,10 @@ $(function(){
                 uname:$("#uname").val(),
                 upw:$("#upw").val()
             },
-            dataType:'json',
+            dataType:'text',
             success:function(data){
                 alert(data);
-                if(data="登入成功"){
+                if(data=="登入成功"){
                     setTimeout(function(){
                         window.location.href='/user'
                     },1000)

@@ -1,3 +1,4 @@
+const session = require("express-session");
 
       //删除按钮的点击事件
 Array.from(document.getElementsByClassName("delete")).forEach(i=>{

@@ -1,6 +1,22 @@
 $(function(){
 //管理员进入后台
-
+    $("#admin").click(function(){
+		$.ajax({
+			type:'get',
+			data:{
+			},
+			dataType:'html',
+			url:'/background',
+			success:function(data){
+				if(data=='您不是管理员无法进入管理'){
+					alert(data)
+				}
+				if(data!='您不是管理员无法进入管理'){
+					window.location.href='/background'
+				}
+			}
+		})
+	})
 
 //	订单页面  修改地址
 	$(".edit").click(function(){
@@ -168,5 +184,4 @@ $(function(){
 	},function(){
 		$(this).children(".wuliu").fadeOut(100);
 	});
-	
 })
