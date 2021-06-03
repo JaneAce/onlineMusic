@@ -5,11 +5,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>歌单</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/song_list/tplayer.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/song_list/style.css"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="/FontAwesome4.1/css/font-awesome.min.css" />
     <script src="/javascripts/player/jquery.js"></script>
     <script src="/javascripts/player/jquery-ui.js"></script>
     <script src="/javascripts/player/tPlayer.js"></script>
+	<script src="/javascrpts/jquery-2.1.4.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -19,7 +21,7 @@
 				<li><a href="/">首页</a></li>
 				<li><a href="mcLib">曲库</a></li>
 				<li class="active"><a href="songList">歌单</a></li>
-				<li ><a href="user">个人中心</a></li>
+				<li ><a id="user">个人中心</a></li>
 				<li><a href="LoginReg">登入</a></li>
 			</ul>
 		</div>
@@ -98,6 +100,6 @@
 			</tbody>
 			<%}) %>
 		</table>
-		
+	<script src="/javascripts/js/index.js"></script>	
 </body>
 </html>

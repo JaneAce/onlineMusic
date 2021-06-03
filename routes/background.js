@@ -13,7 +13,10 @@ var connection = mysql.createConnection({
     //同时使用多条查询语句：
     multipleStatements: true
 });
-var usersql = 'SELECT * FROM `tab_user`;SELECT * FROM `tab_mc_lib`;SElECT isAdmin FROM `tab_user`'
+var datanum=3;//每页数据条数为3
+var page=1;//初始化页数
+var pagesql='SELECT * FROM tab_user limit'+page*datanum+','+(page+1)*datanum//分页查询数据的语句
+var usersql = 'SELECT * FROM `tab_user` limit 3;SELECT * FROM `tab_mc_lib`;SELECT COUNT(user_id) AS pagetotal FROM `tab_user`'
 //后台管理的路由
 router.get('/',(req,res)=>{
     var username=req.session.username
@@ -34,15 +37,16 @@ router.get('/',(req,res)=>{
                         res.send('您不是管理员无法进入管理')
                     }
                     if(baseData[13]=='y'){
-                        connection.query(usersql,function(err,data){
+                        connection.query(usersql,function(err,rows){
                             if(err){
                                 console.log(err)
                             }
-                            if(data){
+                            if(rows){
                                 res.render('background',{
-                                    detail:data[0],
-                                     data:data[1]})
-                            console.log(data)
+                                    detail:rows[0],
+                                     data:rows[1],
+                                    totalPage:JSON.stringify(rows[2][0].pagetotal)},
+                                     )
                             }
                         })
                     }
@@ -65,7 +69,7 @@ router.post('/',(req,res)=>{
             res.render('background',{
                 detail:result[0],
                  data:result[1]})
-                 console.log("查询结果"+result[0])
+                 console.log("用户表查询结果"+result[0])
         }
     })
 });
@@ -81,7 +85,7 @@ router.post('/mc',(req,res)=>{
             res.render('background',{
                 data:result[0],
                  detail:result[1]})
-                 console.log("查询结果"+result[0])
+                 console.log("曲库表查询查询结果"+result[0])
         }
     })
 });
@@ -147,8 +151,8 @@ router.get('/update/:id',(req,res)=>{
 //提交用户修改数据
 router.post('/update',(req,res)=>{
     var param=req.body
-    var updsql='UPDATE tab_user SET user_name=?,user_email=?,user_phone=?,user_pw=? WHERE user_id=?'
-    pool.query(updsql,[param.uname,param.uemail,param.phoneno,param.pw,param.id],function(err,result){
+    var updsql='UPDATE tab_user SET user_name=?,user_email=?,user_phone=?,user_pw=?,isAdmin=? WHERE user_id=?'
+    pool.query(updsql,[param.uname,param.uemail,param.phoneno,param.pw,param.isAdmin,param.id],function(err,result){
         if(err){
             console.log(err+"修改数据失败！")
         }
@@ -176,5 +180,26 @@ router.post('/add',(req,res)=>{
         }
     })
 });
-
+//分页
+var pagesql='SELECT * FROM tab_user limit ?,?'//分页查询数据的语句
+router.get('/page',(req,res)=>{
+    var i = req.query.i
+    pool.getConnection(function(err,conn){
+        if(err){
+            console.log(err)
+        }
+        if(conn){
+            conn.query(pagesql,[i,3],function(err,result){
+                if(err){
+                    console.log(err)
+                }
+                if(result){
+                    res.json(result)
+                    console.log(result)
+                }
+            })
+        }
+        pool.releaseConnection(conn);
+    })
+})
 module.exports=router;

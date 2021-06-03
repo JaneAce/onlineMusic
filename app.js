@@ -29,7 +29,7 @@ app.use(cookieParser("login"));
 app.use(session({
   name:'userlogin',
   secret:'login', 
-  cookie:{maxAge:60000},
+  cookie:{maxAge:600000000},//一周
   resave:false,
   saveUninitialized:true
 }));
